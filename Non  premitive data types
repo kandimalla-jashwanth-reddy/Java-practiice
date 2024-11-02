@@ -1,0 +1,60 @@
+import java.util.ArrayList;
+
+// Interface definition
+interface Drivable {
+    void drive();
+}
+
+// Class definition
+class Car implements Drivable {
+    String color;
+    int speed;
+    String[] features; // Array for car features
+
+    // Constructor
+    public Car(String color, int speed, String[] features) {
+        this.color = color;
+        this.speed = speed;
+        this.features = features;
+    }
+
+    // Method from Drivable interface
+    public void drive() {
+        System.out.println("The " + color + " car is driving at " + speed + " mph.");
+    }
+
+    // Display car features using Array
+    public void displayFeatures() {
+        System.out.println("Features of the car:");
+        for (String feature : features) {
+            System.out.println("- " + feature);
+        }
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Creating an array for car features
+        String[] features = {"Air Conditioning", "Leather Seats", "Bluetooth"};
+        
+        // Creating an instance of Car
+        Car myCar = new Car("Red", 120, features);
+        
+        // Calling methods on the Car object
+        myCar.drive();
+        myCar.displayFeatures();
+
+        // Using an ArrayList collection to store multiple cars
+        ArrayList<Car> carList = new ArrayList<>();
+        carList.add(myCar);
+        carList.add(new Car("Blue", 150, new String[]{"Sunroof", "Heated Seats"}));
+
+        // Displaying all cars in the ArrayList
+        System.out.println("\nList of Cars:");
+        for (Car car : carList) {
+            car.drive();
+            car.displayFeatures();
+        }
+    }
+}
